@@ -1,0 +1,43 @@
+﻿@model BookPublishers.Models.Author
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="row">
+    <div class="col-12">
+        <h3>Confirm Delete</h3>
+        <div class="form-group row mb-1">
+            @Html.LabelFor(x => x.AuthorName, new { @class = "col-form-label col-form-label-sm col-2" })
+            <div class="col-4">
+                @Html.DisplayFor(x => x.AuthorName)
+            </div>
+        </div>
+        <div class="form-group row mb-1">
+            @Html.LabelFor(x => x.MobileNo, new { @class = "col-form-label col-form-label-sm col-2" })
+            <div class="col-4">
+                @Html.DisplayFor(x => x.MobileNo)
+
+            </div>
+        </div>
+        <div class="form-group row mb-1">
+            @Html.LabelFor(x => x.picture, new { @class = "col-form-label col-form-label-sm col-2" })
+            <div class="col-1">
+                <img src="~/Assets/@Model.picture" class="img-thumbnail" style="width:50px" />
+            </div>
+        </div>
+        <div class="form-group row mb-1">
+            @Html.LabelFor(x => x.Book, new { @class = "col-form-label col-form-label-sm col-2" })
+            <div class="col-4">
+                @Html.DisplayFor(x => x.Book.bookName)
+            </div>
+        </div>
+        @using (Html.BeginForm("Delete", "Authors", new { id = Model.AuthorId }, FormMethod.Post))
+        {
+            <div class="col-4 offset-2">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+        }
+    </div>
+</div>
+<div class="col-12">
+    @Html.ActionLink("Back to list", "Index")
+</div>

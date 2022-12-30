@@ -1,0 +1,60 @@
+﻿@model BookPublishers.ViewModel.AuthorInputModel
+@{
+    ViewBag.Title = "Create";
+}
+<div class="row">
+    <div class="col-12">
+        <h3>Add new author</h3>
+        @using (Html.BeginForm("Create", "Authors", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.AuthorName, new { @class = "col-form-label col-form-label-sm col-2" })
+                <div class="col-4">
+                    @Html.TextBoxFor(x => x.AuthorName, new { @class = "form-control form-control-sm" })
+                    @Html.ValidationMessageFor(x => x.AuthorName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.MobileNo, new { @class = "col-form-label col-form-label-sm col-2" })
+                <div class="col-4">
+                    @Html.TextBoxFor(x => x.MobileNo, new { @class = "form-control form-control-sm date" })
+                    @Html.ValidationMessageFor(x => x.MobileNo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.picture, new { @class = "col-form-label col-form-label-sm col-2" })
+                <div class="col-4">
+                    @Html.TextBoxFor(x => x.picture, new { @class = "form-control form-control-sm", type = "file" })
+                    @Html.ValidationMessageFor(x => x.picture, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.BookId, new { @class = "col-form-label col-form-label-sm col-2" })
+                <div class="col-4">
+                    @Html.DropDownListFor(x => x.BookId, new SelectList(ViewBag.Book, "BookId", "bookName"), "Select", new { @class = "form-select form-select-sm" })
+                    @Html.ValidationMessageFor(x => x.BookId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                <div class="col-4 offset-2">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="col-12">
+    @Html.ActionLink("Back to list", "Index")
+</div>
+@section styles{
+
+    <link href="~/Content/bootstrap-datepicker.standalone.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+}
+
+

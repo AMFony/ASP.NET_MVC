@@ -1,0 +1,34 @@
+﻿@model BookPublishers.Models.Publisher
+@using (Ajax.BeginForm("EditPublisher", "Publishers", new { }, new AjaxOptions
+{
+    HttpMethod = "Post",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "alert",
+    OnSuccess = "onSuccess",
+    LoadingElementId = "spinner"
+}))
+{
+    @Html.HiddenFor(x => x.PublisherId)
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.publisherName, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.publisherName, new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(x => x.publisherName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.stablishedDate, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.stablishedDate, new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(x => x.stablishedDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        <div class="col-4 offset-2">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+}
+
+
+

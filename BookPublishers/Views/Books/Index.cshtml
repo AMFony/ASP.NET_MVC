@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BookPublishers.Models.Book>
+@{ ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h2>Books</h2>
+        <div class="d-flex justify-content-end mb-1">
+            @Html.ActionLink("Add new", "Create", "Books", new { }, new { @class = "btn btn-primary btn-sm" })
+        </div>
+        <table class="table table-bordered">
+            <thead class="bg-light">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.bookName)</th>
+                    <th>@Html.DisplayNameFor(x => x.page)</th>
+                    <th>@Html.DisplayNameFor(x => x.genere)</th>
+                    <th>@Html.DisplayNameFor(x => x.isAvailable)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var t in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => t.bookName)</td>
+                        <td>@Html.DisplayFor(x => t.page)</td>
+                        <td>@Html.DisplayFor(x => t.genere)</td>
+                        <td>@Html.DisplayFor(x => t.isAvailable)</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "Books", new { id = t.BookId }, new { @class = "btn btn-secondary btn-sm" })
+                            <a href="@Url.Action("Delete", "Books", new {id=t.BookId})" class="btn btn-danger btn-sm @(t.Authors.Count > 0 ? "disabled" :"")">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

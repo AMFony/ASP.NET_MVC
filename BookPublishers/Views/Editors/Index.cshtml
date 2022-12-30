@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BookPublishers.Models.Editor>
+@{ ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h2>Editors</h2>
+        <div class="d-flex justify-content-end mb-1">
+            @Html.ActionLink("Add new", "Create", "Editors", new { }, new { @class = "btn btn-primary btn-sm" })
+        </div>
+        <table class="table table-bordered">
+            <thead class="bg-light">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.EditorName)</th>
+                    <th>@Html.DisplayNameFor(x => x.MobileNo)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var t in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => t.EditorName)</td>
+                        <td>@Html.DisplayFor(x => t.MobileNo)</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "Editors", new { id = t.EditorId }, new { @class = "btn btn-secondary btn-sm" })
+                            <a href="@Url.Action("Delete", "Editors", new {id=t.EditorId })" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,52 @@
+﻿
+@model BookPublishers.Models.Book
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="row">
+    <div class="col-12">
+        <h3>Confirm Delete</h3>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.bookName, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.DisplayFor(x => x.bookName, new { @class = "form-control form-control-sm" })
+
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.page, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.DisplayFor(x => x.page, new { @class = "form-control form-control-sm" })
+
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.genere, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.DisplayFor(x => x.genere, new { @class = "form-control form-control-sm" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.isAvailable, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.DisplayFor(x => x.isAvailable, new { @class = "form-control form-control-sm" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(x => x.BookId)
+
+            <div class="col-4 offset-2">
+                <button type="submit" class="btn btn-danger">Confirm Delete</button>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+
+

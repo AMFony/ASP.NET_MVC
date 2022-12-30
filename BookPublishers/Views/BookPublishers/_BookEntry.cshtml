@@ -1,0 +1,8 @@
+﻿@model BookPublishers.Models.BookPublisher
+<div class="form-group row mb-1">
+    @Html.LabelFor(x => x.Book, new { @class = "col-form-label col-2" })
+    <div class="col-4">
+        @Html.DropDownListFor(x => x.BookId, new SelectList(ViewBag.Books, "BookId", "bookName"), "Select", new { @class = "form-select select" })
+        @Html.ValidationMessageFor(x => x.BookId, "", new { @class = "text-danger" })
+    </div>
+</div>

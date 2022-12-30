@@ -1,0 +1,48 @@
+﻿@model BookPublishers.Models.Book
+@using (Ajax.BeginForm("CreateBook", "Books", new { }, new AjaxOptions
+{
+    HttpMethod = "Post",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "alert",
+    OnSuccess = "onSuccess",
+    LoadingElementId = "spinner"
+}))
+{
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.bookName, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.bookName, new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(x => x.bookName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.page, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.page, new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(x => x.page, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.genere, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.EnumDropDownListFor(x => x.genere, new { @class = "form-select form-select-sm" })
+            @Html.ValidationMessageFor(x => x.genere, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.isAvailable, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.CheckBoxFor(x => x.isAvailable, new { @class = "form-check" })
+            @Html.ValidationMessageFor(x => x.isAvailable, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        <div class="col-4 offset-2">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+}
+
+
+
+

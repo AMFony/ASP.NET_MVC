@@ -1,0 +1,59 @@
+﻿@model IEnumerable<BookPublishers.Models.Publisher>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-12">
+        <h3 class="rounded d-flex justify-content-center bg-info text-light">Publishers</h3>
+        <div class="d-flex justify-content-end mb-1">
+            @Html.ActionLink("Add New", "CreateBookPublisher", new { }, new { @class = "btn btn-primary btn-sm" })
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead class="bg-light text-bg-light text-success">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.publisherName)</th>
+                    <th>@Html.DisplayNameFor(x => x.stablishedDate)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var b in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => b.publisherName)</td>
+                        <td>@Html.DisplayFor(x => b.stablishedDate)</td>
+                    </tr>
+                    <tr>
+                        <td class="border-end-0">&nbsp;</td>
+                        <td colspan="7" class="border-start-0">
+                            <h3>Book</h3>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>bookName</th>
+                                        <th>page</th>
+                                        <th>genere</th>
+                                        <th>isAvailable</th>
+                                    </tr>
+
+                                </thead>
+                                @foreach (var y in b.BookPublishers)
+                                {
+                                    <tr>
+                                        <td>@y.Book.bookName</td>
+                                        <td>@y.Book.page</td>
+                                        <td>@y.Book.genere</td>
+                                        <td>@y.Book.isAvailable</td>
+                                    </tr>
+                                }
+                            </table>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
